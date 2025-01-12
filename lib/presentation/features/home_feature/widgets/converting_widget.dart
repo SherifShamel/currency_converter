@@ -73,38 +73,11 @@ class ConvertingWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'USD:',
+                    'Result:',
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
                     state is ConvertingSuccessState ? state.currency! : '0.00',
-                    style: TextStyle(color: Colors.blue, fontSize: 24),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'SAR:',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    /*state is ConvertingSuccessState ? state.currency! : */
-                    '0.00',
-                    style: TextStyle(color: Colors.blue, fontSize: 24),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    'EGP:',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    '0.00',
                     style: TextStyle(color: Colors.blue, fontSize: 24),
                   ),
                 ],
