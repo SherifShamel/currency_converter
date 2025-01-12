@@ -8,7 +8,7 @@ class ConvertingUseCase {
 
   ConvertingUseCase(this._convertingRepository);
 
-  Future<Either<Failure,bool>> execute(String from, to, amount) async {
+  Future<Either<Failure,num>> execute(String from, to, amount) async {
     return await _convertingRepository.convert(from, to, amount);
   }
 }

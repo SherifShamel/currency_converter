@@ -16,6 +16,7 @@ class ConvertingWidget extends StatelessWidget {
       child: BlocBuilder<ConvertingCubit, ConvertingStates>(
           builder: (context, state) {
         var cubitControl = ConvertingCubit.get(context);
+
         return Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -41,6 +42,7 @@ class ConvertingWidget extends StatelessWidget {
               ),
               Text("From:"),
               DropdownMenu(
+                hintText: 'From',
                 controller: cubitControl.fromController,
                 width: 300,
                 dropdownMenuEntries: [
@@ -56,9 +58,15 @@ class ConvertingWidget extends StatelessWidget {
                 ),
               ),
               Center(
-                child: MyCustomTextFormField(
+                child: DropdownMenu(
                   hintText: 'to',
                   controller: cubitControl.toController,
+                  width: 300,
+                  dropdownMenuEntries: [
+                    DropdownMenuEntry(value: 'USD', label: 'USD'),
+                    DropdownMenuEntry(value: 'EGP', label: 'EGP'),
+                    DropdownMenuEntry(value: 'SAR', label: 'SAR'),
+                  ],
                 ),
               ),
               Row(
@@ -69,7 +77,7 @@ class ConvertingWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
-                    '0.00',
+                    state is ConvertingSuccessState ? state.currency! : '0.00',
                     style: TextStyle(color: Colors.blue, fontSize: 24),
                   ),
                 ],
@@ -82,6 +90,7 @@ class ConvertingWidget extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
+                    /*state is ConvertingSuccessState ? state.currency! : */
                     '0.00',
                     style: TextStyle(color: Colors.blue, fontSize: 24),
                   ),

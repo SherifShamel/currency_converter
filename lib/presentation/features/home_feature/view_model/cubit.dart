@@ -6,10 +6,8 @@ import 'package:currency_converter/data/web_services/web_services.dart';
 import 'package:currency_converter/domain/converting_use_case/converting_use_case.dart';
 import 'package:currency_converter/domain/repository/converting_repository/converting_repository.dart';
 import 'package:currency_converter/presentation/features/home_feature/view_model/states.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class ConvertingCubit extends Cubit<ConvertingStates> {
   final WebServices _services = WebServices();
@@ -44,9 +42,10 @@ class ConvertingCubit extends Cubit<ConvertingStates> {
         return Future.value(false);
       },
       (data) {
-        emit(ConvertingSuccessState());
+        emit(ConvertingSuccessState(currency: data.toString()));
         return Future.value(true);
       },
     );
+
   }
 }

@@ -150,7 +150,7 @@ class WebServices {
           log(response.data.toString());
           return handler.next(response); // continue
         },
-        onError: (DioError e, handler) {
+        onError: (DioException e, handler) {
           debugPrint('statusCode: ${e.response?.statusCode}');
           debugPrint('path: ${e.requestOptions.path}');
           debugPrint('response: ${e.response}');
@@ -212,7 +212,7 @@ class WebServices {
 
           return handler.next(response);
         },
-        onError: (DioError e, handler) async {
+        onError: (DioException e, handler) async {
           EasyLoading.dismiss();
 
           debugPrint('statusCode: ${e.response?.statusCode}');

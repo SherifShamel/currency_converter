@@ -11,13 +11,13 @@ class ConvertingRepositoryImp implements ConvertingRepository {
   ConvertingRepositoryImp(this._convertingDataSource);
 
   @override
-  Future<Either<Failure, bool>> convert(
+  Future<Either<Failure, num>> convert(
       String from, String to, String amount) async {
     try {
       final response = await _convertingDataSource.convert(from, to, amount);
 
       if (response.statusCode == 200) {
-        return Right(true);
+        return Right(response.data['result']);
       } else {
         return Left(
           ServerFailure(
